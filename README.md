@@ -1,8 +1,3 @@
-# blank
+# Personal CMS for personal projects!
 
-blank
-
-## Attributes
-
-- **Database**: mongodb
-- **Storage Adapter**: localDisk
+Building with Payload 3.0 beta, freshly installed after promises of no more breaking changes :)
