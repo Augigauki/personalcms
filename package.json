@@ -1,31 +1,36 @@
 {
-  "name": "payload3personal",
+  "name": "augdust-cms",
   "version": "1.0.0",
   "description": "A blank template to get started with Payload 3.0",
   "license": "MIT",
   "type": "module",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
-    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev -p 3030",
+    "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev  -p 3030",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start -p 3030"
   },
   "dependencies": {
-    "@payloadcms/db-mongodb": "beta",
-    "@payloadcms/next": "beta",
-    "@payloadcms/plugin-cloud": "beta",
-    "@payloadcms/richtext-lexical": "beta",
+    "@aws-sdk/client-s3": "^3.637.0",
+    "@aws-sdk/lib-storage": "^3.637.0",
+    "@payloadcms/db-mongodb": "3.0.0-beta.92",
+    "@payloadcms/next": "3.0.0-beta.92",
+    "@payloadcms/plugin-cloud-storage": "3.0.0-beta.92",
+    "@payloadcms/richtext-lexical": "3.0.0-beta.92",
+    "@payloadcms/storage-s3": "3.0.0-beta.92",
+    "@payloadcms/ui": "3.0.0-beta.92",
     "cross-env": "^7.0.3",
     "graphql": "^16.8.1",
     "next": "15.0.0-canary.104",
-    "payload": "beta",
+    "payload": "3.0.0-beta.92",
     "react": "19.0.0-rc-06d0b89e-20240801",
     "react-dom": "19.0.0-rc-06d0b89e-20240801",
-    "sharp": "0.32.6"
+    "sharp": "0.32.6",
+    "slugify": "^1.6.6"
   },
   "devDependencies": {
     "@types/node": "^20.14.9",

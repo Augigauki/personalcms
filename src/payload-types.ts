@@ -9,10 +9,14 @@
 export interface Config {
   auth: {
     users: UserAuthOperations;
+    apiUsers: ApiUserAuthOperations;
   };
   collections: {
     users: User;
-    media: Media;
+    apiUsers: ApiUser;
+    photographs: Photograph;
+    photographers: Photographer;
+    exhibitions: Exhibition;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -21,11 +25,33 @@ export interface Config {
   };
   globals: {};
   locale: null;
-  user: User & {
-    collection: 'users';
-  };
+  user:
+    | (User & {
+        collection: 'users';
+      })
+    | (ApiUser & {
+        collection: 'apiUsers';
+      });
 }
 export interface UserAuthOperations {
+  forgotPassword: {
+    email: string;
+    password: string;
+  };
+  login: {
+    email: string;
+    password: string;
+  };
+  registerFirstUser: {
+    email: string;
+    password: string;
+  };
+  unlock: {
+    email: string;
+    password: string;
+  };
+}
+export interface ApiUserAuthOperations {
   forgotPassword: {
     email: string;
     password: string;
@@ -62,11 +88,29 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
+ * via the `definition` "apiUsers".
  */
-export interface Media {
+export interface ApiUser {
   id: string;
-  alt: string;
+  name?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "photographs".
+ */
+export interface Photograph {
+  id: string;
+  location?: string | null;
+  year?: number | null;
+  exnibition?: (string | null) | Exhibition;
+  photographer?: (string | null) | Photographer;
+  streetview?: string | null;
+  hero?: boolean | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -81,14 +125,57 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "exhibitions".
+ */
+export interface Exhibition {
+  id: string;
+  title: string;
+  slug?: string | null;
+  introText?: string | null;
+  thumbnail?: (string | null) | Photograph;
+  photos?:
+    | {
+        photo?: (string | null) | Photograph;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "photographers".
+ */
+export interface Photographer {
+  id: string;
+  name: string;
+  slug?: string | null;
+  about?: string | null;
+  links?:
+    | {
+        linkTitle?: string | null;
+        link?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
   id: string;
-  user: {
-    relationTo: 'users';
-    value: string | User;
-  };
+  user:
+    | {
+        relationTo: 'users';
+        value: string | User;
+      }
+    | {
+        relationTo: 'apiUsers';
+        value: string | ApiUser;
+      };
   key?: string | null;
   value?:
     | {
