@@ -42,10 +42,6 @@ export const Photographs: CollectionConfig = {
         {
             name: 'streetview',
             type: 'text',
-            validate: ({data}) => {
-                console.log(data);
-                return data.startsWith('https://');
-            }
         },
         {
             name: 'hero',

@@ -56,21 +56,10 @@ export const Photographers: CollectionConfig = {
                         {
                             name: 'link',
                             type: 'text',
-                           /*  validate: ({data}) => {
-                                console.log(data);
-                                return data?.startsWith('https://');
-                            } */
                         }
                     ]
                 }
             ],
-            admin: {
-                /* components: {
-                    RowLabel: ({data}: {data: any}) => {
-                        return data?.linkTitle || 'Linknavn'
-                    }
-                } */
-            }
         }
     ]
 }

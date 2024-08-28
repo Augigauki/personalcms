@@ -133,12 +133,6 @@ export interface Exhibition {
   slug?: string | null;
   introText?: string | null;
   thumbnail?: (string | null) | Photograph;
-  photos?:
-    | {
-        photo?: (string | null) | Photograph;
-        id?: string | null;
-      }[]
-    | null;
   updatedAt: string;
   createdAt: string;
 }

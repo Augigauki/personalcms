@@ -41,7 +41,7 @@ export const Exhibitions: CollectionConfig = {
             type: 'upload',
             relationTo: 'photographs',
           },
-          {
+          /* {
             name: 'photos',
             type: 'array',
             fields: [
@@ -50,11 +50,7 @@ export const Exhibitions: CollectionConfig = {
                 type: 'upload',
                 relationTo: 'photographs'
               },
-              /* {
-                name: 'title',
-                type: 'text',
-              }, */
             ],
-          },
+          }, */
     ]
 }
