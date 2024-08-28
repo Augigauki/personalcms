@@ -107,7 +107,7 @@ export interface Photograph {
   id: string;
   location?: string | null;
   year?: number | null;
-  exnibition?: (string | null) | Exhibition;
+  exhibition?: (string | null) | Exhibition;
   photographer?: (string | null) | Photographer;
   streetview?: string | null;
   hero?: boolean | null;

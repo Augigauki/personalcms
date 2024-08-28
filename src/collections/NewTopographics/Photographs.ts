@@ -20,13 +20,14 @@ export const Photographs: CollectionConfig = {
             type: 'row',
             fields: [
                 {
-                    name: 'exnibition',
+                    name: 'exhibition',
                     type: 'relationship',
                     relationTo: 'exhibitions',
                     hasMany: false,
                     admin: {
                         allowCreate: false,
-                    }
+                    },
+                    index: true,
                 },
                 {
                     name: 'photographer',
@@ -35,7 +36,8 @@ export const Photographs: CollectionConfig = {
                     hasMany: false,
                     admin: {
                         allowCreate: false,
-                    }
+                    },
+                    index: true,
                 }
             ]
         },
